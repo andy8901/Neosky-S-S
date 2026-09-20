@@ -27,6 +27,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var latestIntentState: MutableState<Intent?>
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
