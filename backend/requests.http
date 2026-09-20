@@ -1,0 +1,47 @@
+### Requires the "REST Client" VS Code extension (humao.rest-client).
+### Run "backend: run server" (or docker compose up) first, then click "Send Request"
+### above each block below. Seeded demo login from scripts/seed.py.
+
+@baseUrl = http://localhost:8000/api
+
+### Login (seeded demo customer)
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "identifier": "aniket@throttle.aero",
+  "password": "NeoSky@123"
+}
+
+### Dashboard (uses the access token from the login response above)
+GET {{baseUrl}}/dashboard
+Authorization: Bearer {{login.response.body.access_token}}
+
+### My drones
+GET {{baseUrl}}/drones
+Authorization: Bearer {{login.response.body.access_token}}
+
+### Tickets
+GET {{baseUrl}}/tickets
+Authorization: Bearer {{login.response.body.access_token}}
+
+### Flight log stats
+GET {{baseUrl}}/flights/stats
+Authorization: Bearer {{login.response.body.access_token}}
+
+### Customer-isolation check: log in as the second seeded customer, then
+### try requesting drone/ticket ids that belong to the first customer above
+### (paste an id from the /drones or /tickets response) — expect 404.
+# @name login2
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "identifier": "owner@skyfleet.example",
+  "password": "NeoSky@123"
+}
+
+### Replace {{droneIdFromCustomer1}} with a real id, then send — expect 404.
+GET {{baseUrl}}/drones/{{droneIdFromCustomer1}}
+Authorization: Bearer {{login2.response.body.access_token}}

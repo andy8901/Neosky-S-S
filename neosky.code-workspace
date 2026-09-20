@@ -1,0 +1,31 @@
+{
+  "folders": [
+    { "name": "NeoSky (root: schema + docs)", "path": "." },
+    { "name": "Backend (FastAPI)", "path": "backend" },
+    { "name": "Android (Kotlin/Compose)", "path": "android" }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.venv": true,
+      "**/__pycache__": true,
+      "**/.pytest_cache": true,
+      "**/.ruff_cache": true,
+      "**/.gradle": true,
+      "**/build": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.debugpy",
+      "ms-python.vscode-pylance",
+      "ms-python.black-formatter",
+      "charliermarsh.ruff",
+      "humao.rest-client",
+      "ms-azuretools.vscode-docker",
+      "fwcd.kotlin",
+      "vscjava.vscode-gradle",
+      "redhat.vscode-yaml"
+    ]
+  }
+}

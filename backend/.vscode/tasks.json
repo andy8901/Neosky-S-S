@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "backend: create venv + install deps",
+      "type": "shell",
+      "command": "python3 -m venv .venv && .venv/bin/pip install -r requirements.txt",
+      "problemMatcher": []
+    },
+    {
+      "label": "backend: run pytest",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/pytest -v",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "backend: run server (uvicorn --reload)",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/uvicorn app.main:app --reload --port 8000",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "backend: docker compose up",
+      "type": "shell",
+      "command": "docker compose up --build",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "backend: ruff check",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/bin/ruff check .",
+      "problemMatcher": []
+    }
+  ]
+}

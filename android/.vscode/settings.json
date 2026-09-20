@@ -1,0 +1,11 @@
+{
+  "java.import.gradle.enabled": true,
+  "java.import.gradle.wrapper.enabled": true,
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "kotlin.languageServer.enabled": true,
+  "files.exclude": {
+    "**/build": true,
+    "**/.gradle": true,
+    "**/.idea": true
+  }
+}

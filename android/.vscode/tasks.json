@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "android: unit tests",
+      "type": "shell",
+      "command": "./gradlew testDebugUnitTest",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": ["$gradle"]
+    },
+    {
+      "label": "android: instrumented tests (needs emulator/device)",
+      "type": "shell",
+      "command": "./gradlew connectedDebugAndroidTest",
+      "group": "test",
+      "problemMatcher": ["$gradle"]
+    },
+    {
+      "label": "android: assemble debug APK",
+      "type": "shell",
+      "command": "./gradlew assembleDebug",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gradle"]
+    },
+    {
+      "label": "android: lint",
+      "type": "shell",
+      "command": "./gradlew lintDebug",
+      "problemMatcher": ["$gradle"]
+    },
+    {
+      "label": "android: clean",
+      "type": "shell",
+      "command": "./gradlew clean",
+      "problemMatcher": []
+    }
+  ]
+}

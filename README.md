@@ -37,6 +37,31 @@ docs/       REST API specification (contract shared by backend and app)
 3. **Demo login** (seeded by `backend/scripts/seed.py`):
    `aniket@throttle.aero` / `NeoSky@123`.
 
+## Testing in VS Code
+
+Open `neosky.code-workspace` (multi-root: root / `backend` / `android`) — VS
+Code will offer to install the recommended extensions (Python, Ruff, REST
+Client, Docker, Kotlin, Gradle for Java).
+
+**Backend** (`backend/.vscode/`):
+- `tasks.json` — "backend: create venv + install deps" once, then
+  "backend: run pytest" (default test task, Ctrl/Cmd+Shift+B) or
+  "backend: run server" / "backend: docker compose up".
+- `launch.json` — F5 debug configs: run `uvicorn` with breakpoints, debug the
+  current test file or the full suite, or run `scripts/seed.py` /
+  `init_db.py` under the debugger.
+- `requests.http` — manual smoke tests via the REST Client extension: login,
+  dashboard, drones, tickets, flight stats, and a ready-made
+  customer-isolation check (log in as the second seeded customer and confirm
+  a `404` on the first customer's drone id).
+
+**Android** (`android/.vscode/tasks.json`): "android: unit tests" (default
+test task), "android: instrumented tests" (needs an emulator/device),
+"android: assemble debug APK", "android: lint". VS Code is fine for editing
+Kotlin and running these Gradle tasks from its terminal, but Android Studio
+remains the better choice for the emulator, layout preview, and full
+debugging experience.
+
 ## Architecture & data model
 
 - [`database/schema.sql`](database/schema.sql) — 19 tables (users, customers,
