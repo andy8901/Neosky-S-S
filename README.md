@@ -44,9 +44,15 @@ Code will offer to install the recommended extensions (Python, Ruff, REST
 Client, Docker, Kotlin, Gradle for Java).
 
 **Backend** (`backend/.vscode/`):
-- `tasks.json` — "backend: create venv + install deps" once, then
-  "backend: run pytest" (default test task, Ctrl/Cmd+Shift+B) or
-  "backend: run server" / "backend: docker compose up".
+- `tasks.json` — "backend: create venv + install deps" once (this task and
+  the others below have Windows-specific commands baked in, so the same
+  task label works on macOS/Linux and Windows), then "backend: run pytest"
+  (default test task, Ctrl/Cmd+Shift+B) or "backend: run server" /
+  "backend: docker compose up".
+- After the venv exists, run **Python: Select Interpreter** (Ctrl+Shift+P)
+  and pick the `.venv` VS Code auto-detects — `python.defaultInterpreterPath`
+  is deliberately not hardcoded in `settings.json` since the venv layout
+  differs by OS (`.venv/bin/python` vs `.venv\Scripts\python.exe`).
 - `launch.json` — F5 debug configs: run `uvicorn` with breakpoints, debug the
   current test file or the full suite, or run `scripts/seed.py` /
   `init_db.py` under the debugger.

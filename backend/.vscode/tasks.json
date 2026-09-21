@@ -5,12 +5,18 @@
       "label": "backend: create venv + install deps",
       "type": "shell",
       "command": "python3 -m venv .venv && .venv/bin/pip install -r requirements.txt",
+      "windows": {
+        "command": "python -m venv .venv; .venv\\Scripts\\pip install -r requirements.txt"
+      },
       "problemMatcher": []
     },
     {
       "label": "backend: run pytest",
       "type": "shell",
       "command": "${workspaceFolder}/.venv/bin/pytest -v",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\pytest.exe -v"
+      },
       "group": { "kind": "test", "isDefault": true },
       "problemMatcher": []
     },
@@ -18,6 +24,9 @@
       "label": "backend: run server (uvicorn --reload)",
       "type": "shell",
       "command": "${workspaceFolder}/.venv/bin/uvicorn app.main:app --reload --port 8000",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\uvicorn.exe app.main:app --reload --port 8000"
+      },
       "isBackground": true,
       "problemMatcher": []
     },
@@ -32,6 +41,9 @@
       "label": "backend: ruff check",
       "type": "shell",
       "command": "${workspaceFolder}/.venv/bin/ruff check .",
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\ruff.exe check ."
+      },
       "problemMatcher": []
     }
   ]
